@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CountryCapital</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="country">Country</string>
+    <string name="capital">Capital</string>
+    <string name="submit">Submit</string>
+    <string name="correct_answer">You guessed it right!</string>
+    <string name="wrong_answer">You guessed it wrong!!</string>
+    <string name="empty_capital">Please enter the capital</string>
+    <string name="next">Next</string>
+</resources>
