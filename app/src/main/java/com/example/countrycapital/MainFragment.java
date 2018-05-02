@@ -26,15 +26,21 @@ import java.util.concurrent.CompletableFuture;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements View.OnClickListener {
 
     protected static final String TAG = MainFragment.class.getSimpleName();
+    protected static final int NUM_CHOICES = 4;
+
     protected List<Country> mItems;
     protected Random mRandom = new Random();
     protected TextView mTvCountry;
-    protected EditText mEtCapital;
+    protected TextView mTvCapital_1;
+    protected TextView mTvCapital_2;
+    protected TextView mTvCapital_3;
+    protected TextView mTvCapital_4;
     protected Button mBtSubmit;
     protected Country mCountry;
+
 
     public MainFragment() {
         // Required empty public constructor
@@ -52,24 +58,32 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
         mTvCountry = v.findViewById(R.id.tv_country_val);
-        mEtCapital = v.findViewById(R.id.et_capital);
-        mBtSubmit = v.findViewById(R.id.bt_submit);
-        mBtSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String val = mEtCapital.getText().toString();
-                if (TextUtils.isEmpty(val)) {
-                    Toast.makeText(getContext(), R.string.empty_capital, Toast.LENGTH_SHORT).show();
-                } else {
-                    if (mCountry.isValidCapital(val)) {
-                        Toast.makeText(getContext(), R.string.correct_answer, Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getContext(), R.string.wrong_answer, Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-        });
+        mTvCapital_1 = v.findViewById(R.id.tv_capital_1);
+        mTvCapital_2 = v.findViewById(R.id.tv_capital_2);
+        mTvCapital_3 = v.findViewById(R.id.tv_capital_3);
+        mTvCapital_4 = v.findViewById(R.id.tv_capital_4);
+
+
+
         return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_capital_1:
+
+                break;
+            case R.id.tv_capital_2:
+
+                break;
+            case R.id.tv_capital_3:
+
+                break;
+            case R.id.tv_capital_4:
+
+                break;
+        }
     }
 
     public static Fragment newFragment() {
@@ -81,6 +95,10 @@ public class MainFragment extends Fragment {
         int i = mRandom.nextInt(mItems.size());
         mCountry = mItems.get(i);
         mTvCountry.setText(mCountry.getName());
+
+        // get random num for correct choice
+        mRandom.nextInt(NUM_CHOICES);
+
     }
 
     private class CountryFetchTask extends AsyncTask<Void, Void, List> {
